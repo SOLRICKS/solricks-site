@@ -630,6 +630,11 @@
       }
     }
 
+	.call-mobile-icon {
+	  display: none;
+	}
+
+	/* Mobile */
     @media (max-width: 680px) {
       .topbar {
         height: 72px;
@@ -653,14 +658,45 @@
         max-width: 160px;
       }
 
-      .call-button {
-        min-width: auto;
-        padding: 0 8px 0 4px;
-      }
+	 .call-button {
+		width: 74px;
+		height: 42px;
+		min-width: 74px;
+		padding: 0 8px 0 2px !important;
+		gap: 8px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: flex-start;
+	  }
 
-      .call-text {
-        display: none;
-      }
+	  .call-avatar-wrap {
+		width: 38px;
+		height: 38px;
+		flex: 0 0 38px;
+	  }
+
+	  .call-avatar {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	  }
+
+	  .call-text {
+		display: none;
+	  }
+
+	  .call-mobile-icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 16px;
+		height: 16px;
+		flex: 0 0 16px;
+		color: #fff;
+		font-size: 13px;
+		position: relative;
+		z-index: 2;
+	  }
 
       .arrow-button {
         width: 38px;
@@ -673,7 +709,7 @@
 
       .headline {
         left: 18px;
-        top: 72px;
+        top: 58px;
         width: calc(100vw - 36px);
       }
 
@@ -690,7 +726,7 @@
 
       .ai-side {
         right: 22px;
-        top: 110px;
+        top: 96px;
         z-index: 5;
       }
 
@@ -772,12 +808,15 @@
         </a>
 
         <div class="topbar-right">
-          <a class="call-button" href="mailto:hello@solricks.com">
-            <span class="call-avatar-wrap">
-              <img class="call-avatar" src="upload/portfolio.jpeg" alt="Portfolio" />
-            </span>
-            <span class="call-text">Contact</span>
-          </a>
+			<a class="call-button" href="mailto:hello@solricks.com">
+			  <span class="call-avatar-wrap">
+				<img class="call-avatar" src="upload/portfolio.jpeg" alt="Portfolio" />
+			  </span>
+			  <span class="call-text">Contact</span>
+			  <span class="call-mobile-icon" aria-hidden="true">
+				<i class="fa-solid fa-envelope"></i>
+			  </span>
+			</a>
           <a class="arrow-button" href="mailto:hello@solricks.com" aria-label="Contact Solricks">↗</a>
         </div>
       </header>
