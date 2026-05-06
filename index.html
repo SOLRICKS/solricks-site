@@ -355,8 +355,8 @@
 
     .ai-side {
       position: absolute;
-      right: 28px;
-      top: 78px;
+      right: 30px;
+      top: 80px;
       z-index: 5;
       padding-top: 0;
       text-align: right;
@@ -636,14 +636,17 @@
         grid-template-columns: 1fr auto 1fr;
         gap: 8px;
       }
-
-      .topbar-left {
-        display: none;
-      }
+	  
+	  .topbar-left, .topbar-right {
+		display: flex;
+		align-items: center;
+		padding: 0 15px;
+	}
 
       .brand {
         min-width: auto;
-        height: 36px;
+        height: 66px;
+		transform: translateX(-50px);
       }
 
       .brand img {
@@ -687,7 +690,7 @@
 
       .ai-side {
         right: 22px;
-        top: 500px;
+        top: 110px;
         z-index: 5;
       }
 
