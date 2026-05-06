@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Solricks | Unlock Visual Power</title>
+  <title>Solricks | Start Automating</title>
   <link rel="icon" type="image/png" href="upload/favicon.png" sizes="64x64">
   <meta name="description" content="Solricks provides AI services, machine learning automation, strategic IT consulting, and AI-powered visual technology for modern businesses." />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -115,13 +115,39 @@
       font-weight: 800;
       font-size: 13px;
       letter-spacing: 0.02em;
-      transition: 0.2s ease;
+      transition: 0.22s ease;
     }
 
     .call-button {
-      min-width: 188px;
+      min-width: 0;
       gap: 12px;
-      padding: 0 14px 0 6px;
+      /* padding: 0 14px 0 6px; */
+	  padding: 0 42px 0 0 !important;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .call-button::before,
+    .journey-button::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        110deg,
+        transparent 0%,
+        transparent 34%,
+        rgba(255,255,255,0.35) 48%,
+        transparent 62%,
+        transparent 100%
+      );
+      transform: translateX(-120%);
+      transition: transform 0.65s cubic-bezier(.22, 1, .36, 1);
+      pointer-events: none;
+    }
+
+    .call-button:hover::before,
+    .journey-button:hover::before {
+      transform: translateX(120%);
     }
 
     .call-avatar-wrap {
@@ -131,6 +157,8 @@
       overflow: hidden;
       border: 1px solid rgba(255,255,255,0.16);
       background: rgba(255,255,255,0.08);
+      position: relative;
+      z-index: 2;
     }
 
     .call-avatar {
@@ -144,6 +172,8 @@
 
     .call-text {
       white-space: nowrap;
+      position: relative;
+      z-index: 2;
     }
 
     .arrow-button {
@@ -216,11 +246,70 @@
       bottom: -18px;
       z-index: 2;
       width: clamp(560px, 46vw, 810px);
+      pointer-events: none;
+      isolation: isolate;
+    }
+
+    .robot-img {
+      display: block;
+      width: 100%;
+      height: auto;
       object-fit: contain;
       object-position: bottom center;
       opacity: 0.9;
-      pointer-events: none;
-      filter: brightness(0.82) contrast(1.08) saturate(0.92);
+      filter:
+        brightness(0.82)
+        contrast(1.08)
+        saturate(0.92);
+      animation: robotEdgeStroke 4.6s ease-in-out infinite;
+      will-change: filter;
+    }
+
+    @keyframes robotEdgeStroke {
+      0%, 100% {
+        filter:
+          brightness(0.82)
+          contrast(1.08)
+          saturate(0.92)
+          drop-shadow(-2px -2px 0 rgba(80, 150, 255, 0.00))
+          drop-shadow(2px 2px 0 rgba(120, 80, 255, 0.00));
+      }
+
+      18% {
+        filter:
+          brightness(0.86)
+          contrast(1.1)
+          saturate(0.98)
+          drop-shadow(-2px -3px 1px rgba(75, 155, 255, 0.78))
+          drop-shadow(-7px -8px 16px rgba(75, 155, 255, 0.26));
+      }
+
+      38% {
+        filter:
+          brightness(0.84)
+          contrast(1.1)
+          saturate(0.96)
+          drop-shadow(3px -1px 1px rgba(80, 165, 255, 0.68))
+          drop-shadow(10px -2px 18px rgba(80, 165, 255, 0.22));
+      }
+
+      62% {
+        filter:
+          brightness(0.86)
+          contrast(1.1)
+          saturate(1)
+          drop-shadow(3px 4px 1px rgba(120, 95, 255, 0.68))
+          drop-shadow(9px 12px 18px rgba(120, 95, 255, 0.22));
+      }
+
+      82% {
+        filter:
+          brightness(0.85)
+          contrast(1.1)
+          saturate(0.98)
+          drop-shadow(-3px 2px 1px rgba(55, 135, 255, 0.58))
+          drop-shadow(-10px 8px 18px rgba(55, 135, 255, 0.18));
+      }
     }
 
     .hero-main {
@@ -251,54 +340,17 @@
       background-clip: text;
       color: transparent;
       text-wrap: balance;
+      transition: filter 0.25s ease, transform 0.25s ease;
+    }
+
+    .headline-line:hover {
+      filter: brightness(1.18);
+      transform: translateY(-2px);
     }
 
     .headline-line.offset {
       margin-left: clamp(70px, 20vw, 390px);
       margin-top: 28px;
-    }
-
-    .unlock-icon {
-      width: clamp(82px, 8vw, 132px);
-      height: clamp(82px, 8vw, 132px);
-      flex: 0 0 auto;
-      position: relative;
-      display: inline-block;
-      transform: translateY(-4px);
-    }
-
-    .unlock-icon::before {
-      content: "";
-      position: absolute;
-      left: 22%;
-      top: 2%;
-      width: 46%;
-      height: 44%;
-      border: clamp(10px, 1.1vw, 18px) solid rgba(230,230,230,0.9);
-      border-bottom: 0;
-      border-radius: 36px 36px 0 0;
-      transform: rotate(-8deg) translateY(-18%);
-    }
-
-    .unlock-icon::after {
-      content: "";
-      position: absolute;
-      inset: 34% 16% 4%;
-      border-radius: 16px;
-      background: linear-gradient(180deg, #f8f8f8, #898989 78%);
-      box-shadow: inset 0 -10px 18px rgba(0,0,0,0.23);
-    }
-
-    .keyhole {
-      position: absolute;
-      left: 50%;
-      top: 58%;
-      z-index: 2;
-      width: 22%;
-      height: 34%;
-      transform: translate(-50%, -50%);
-      border-radius: 999px;
-      background: #05070b;
     }
 
     .ai-side {
@@ -319,13 +371,12 @@
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      transition: filter 0.25s ease, transform 0.25s ease;
     }
 
-    .since {
-      margin-top: 14px;
-      color: #ffffff;
-      font-size: 18px;
-      font-weight: 800;
+    .ai-label:hover {
+      filter: brightness(1.18);
+      transform: translateY(-2px);
     }
 
     .hero-copy {
@@ -362,8 +413,13 @@
       margin-left: 0;
     }
 
-    .avatar:nth-child(2) { background: linear-gradient(135deg, #8c6a4f, #2f241f); }
-    .avatar:nth-child(3) { background: linear-gradient(135deg, #b8c8ff, #3f4f90); }
+    .avatar:nth-child(2) {
+      background: linear-gradient(135deg, #8c6a4f, #2f241f);
+    }
+
+    .avatar:nth-child(3) {
+      background: linear-gradient(135deg, #b8c8ff, #3f4f90);
+    }
 
     .avatar-more {
       background: #2a2d35;
@@ -412,7 +468,9 @@
       color: #07080c;
       font-weight: 900;
       letter-spacing: 0.01em;
-      transition: 0.2s ease;
+      transition: 0.22s ease;
+      position: relative;
+      overflow: hidden;
     }
 
     .journey-button:hover {
@@ -420,8 +478,39 @@
       box-shadow: 0 20px 40px rgba(0,0,0,0.28);
     }
 
-    .journey-button span {
+    .journey-text-wrap {
+      height: 58px;
       padding: 0 26px;
+      display: grid;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      z-index: 2;
+      white-space: nowrap;
+    }
+
+    .roll-line {
+      grid-area: 1 / 1;
+      display: block;
+      line-height: 58px;
+      transition: transform 0.48s cubic-bezier(.22, 1, .36, 1);
+      will-change: transform;
+    }
+
+    .roll-line-top {
+      transform: translateY(0);
+    }
+
+    .roll-line-bottom {
+      transform: translateY(115%);
+    }
+
+    .journey-button:hover .roll-line-top {
+      transform: translateY(-115%);
+    }
+
+    .journey-button:hover .roll-line-bottom {
+      transform: translateY(0);
     }
 
     .journey-button i {
@@ -434,6 +523,13 @@
       color: #ffffff;
       font-style: normal;
       font-size: 22px;
+      position: relative;
+      z-index: 2;
+      transition: transform 0.25s ease;
+    }
+
+    .journey-button:hover i {
+      transform: translate(2px, -2px);
     }
 
     .social-dock {
@@ -510,6 +606,9 @@
         right: -28px;
         bottom: -18px;
         width: clamp(520px, 55vw, 650px);
+      }
+
+      .robot-img {
         opacity: 0.82;
       }
 
@@ -520,11 +619,6 @@
 
       .ai-label {
         font-size: clamp(88px, 13vw, 132px);
-      }
-
-      .since {
-        font-size: 16px;
-        margin-top: 10px;
       }
 
       .hero-copy {
@@ -591,11 +685,6 @@
         margin-top: 22px;
       }
 
-      .unlock-icon {
-        width: 62px;
-        height: 62px;
-      }
-
       .ai-side {
         right: 22px;
         top: 500px;
@@ -606,15 +695,13 @@
         font-size: 72px;
       }
 
-      .since {
-        font-size: 15px;
-        margin-top: 6px;
-      }
-
       .hero-robot {
         right: -74px;
         bottom: 42px;
         width: 390px;
+      }
+
+      .robot-img {
         opacity: 0.46;
       }
 
@@ -638,10 +725,16 @@
 
       .journey-button {
         min-height: 52px;
+        grid-template-columns: 1fr 52px;
       }
 
-      .journey-button span {
+      .journey-text-wrap {
+        height: 52px;
         padding: 0 18px;
+      }
+
+      .roll-line {
+        line-height: 52px;
       }
 
       .journey-button i {
@@ -659,6 +752,9 @@
         height: 32px;
       }
     }
+	::selection {
+	  background: transparent;
+	}
   </style>
 </head>
 
@@ -688,11 +784,15 @@
           <video class="hero-video" autoplay muted loop playsinline>
             <source src="upload/hero-bg.mp4" type="video/mp4" />
           </video>
+
           <div class="hero-overlay" aria-hidden="true"></div>
-          <img class="hero-robot" src="upload/rob.webp" alt="" aria-hidden="true" />
+
+          <div class="hero-robot" aria-hidden="true">
+            <img class="robot-img" src="upload/rob.webp" alt="" />
+          </div>
 
           <div class="hero-main">
-            <div class="headline" aria-label="Unlock Visual Power">
+            <div class="headline" aria-label="Build With AI">
               <div class="headline-line">BUILD</div>
               <div class="headline-line offset">WITH</div>
             </div>
@@ -708,7 +808,7 @@
                 <span class="avatar"></span>
                 <span class="avatar"></span>
                 <span class="avatar"></span>
-                <span class="avatar-more">+52</span>
+                <span class="avatar-more">+22</span>
               </div>
 
               <div>
@@ -722,8 +822,11 @@
               <span>build high-quality visual workflows.</span>
             </h2>
 
-            <a class="journey-button" href="mailto:hello@solricks.com">
-              <span>Start your AI journey</span>
+            <a class="journey-button" href="mailto:hello@solricks.com" aria-label="Start your AI journey">
+              <span class="journey-text-wrap">
+                <span class="roll-line roll-line-top">Build Your Workflow</span>
+                <span class="roll-line roll-line-bottom" aria-hidden="true">Start Automating</span>
+              </span>
               <i>↗</i>
             </a>
           </div>
@@ -732,9 +835,9 @@
     </div>
 
     <div class="social-dock" aria-label="Social links">
-      <a class="social-link" target="_blank" href="https://github.com/SOLRICKS" aria-label="Github" title="Solricks"><i class="fa-brands fa-github"></i></a>
-      <a class="social-link" target="_blank" href="https://www.patreon.com/c/Solricks" aria-label="Patreon" title="Solricks"><i class="fa-brands fa-patreon"></i></a>
-      <a class="social-link" target="_blank" href="https://civitai.com/user/Solricks" aria-label="Civitai" title="Solricks"><i class="fa-solid fa-robot"></i></a>
+      <a class="social-link" target="_blank" href="https://github.com/SOLRICKS" aria-label="Github" title="Solricks Github"><i class="fa-brands fa-github"></i></a>
+      <a class="social-link" target="_blank" href="https://www.patreon.com/c/Solricks" aria-label="Patreon" title="Solricks Patreon"><i class="fa-brands fa-patreon"></i></a>
+      <a class="social-link" target="_blank" href="https://civitai.com/user/Solricks" aria-label="Civitai" title="Solricks Civitai"><i class="fa-solid fa-robot"></i></a>
     </div>
   </div>
 </body>
