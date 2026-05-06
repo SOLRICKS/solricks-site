@@ -808,7 +808,7 @@
                 <span class="avatar"></span>
                 <span class="avatar"></span>
                 <span class="avatar"></span>
-                <span class="avatar-more">+22</span>
+                <span class="avatar-more" id="github-stars">+22</span>
               </div>
 
               <div>
@@ -840,5 +840,35 @@
       <a class="social-link" target="_blank" href="https://civitai.com/user/Solricks" aria-label="Civitai" title="Solricks Civitai"><i class="fa-solid fa-robot"></i></a>
     </div>
   </div>
+  <script>
+  async function loadGitHubStars() {
+    const starsEl = document.getElementById("github-stars");
+
+    if (!starsEl) return;
+
+    try {
+      const response = await fetch("https://api.github.com/repos/SOLRICKS/comfyui-solricks", {
+        headers: {
+          "Accept": "application/vnd.github+json"
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error("GitHub API request failed");
+      }
+
+      const repo = await response.json();
+      const stars = Number(repo.stargazers_count || 0);
+
+      starsEl.textContent = `+${stars}`;
+      starsEl.title = `${stars} GitHub stars`;
+    } catch (error) {
+      console.warn("Could not load GitHub stars:", error);
+      starsEl.textContent = "+22";
+    }
+  }
+
+  loadGitHubStars();
+</script>
 </body>
 </html>
