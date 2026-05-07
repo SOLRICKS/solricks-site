@@ -115,7 +115,7 @@
 
             <h2>
               We help businesses adopt AI, automate operations, and
-			<span>build high-quality AI models and visual workflows.</span>
+			<span>build high-quality AI systems, models, and workflows.</span>
             </h2>
 
             <a class="journey-button" href="#" aria-label="Start your AI journey">
@@ -360,59 +360,68 @@
 	  }
 	});
 
- async function loadGitHubStars() {
-    const starsEl = document.getElementById("github-stars");
-    const avatarEls = [
-      document.getElementById("github-avatar-1"),
-      document.getElementById("github-avatar-2"),
-      document.getElementById("github-avatar-3")
-    ];
+async function loadGitHubStars() {
+  const starsEl = document.getElementById("github-stars");
+  const avatarEls = [
+    document.getElementById("github-avatar-1"),
+    document.getElementById("github-avatar-2"),
+    document.getElementById("github-avatar-3")
+  ];
 
-    if (!starsEl) return;
+  const repoUrl = "https://api.github.com/repos/SOLRICKS/comfyui-solricks";
+  const stargazersUrl = "https://api.github.com/repos/SOLRICKS/comfyui-solricks/stargazers?per_page=3";
 
-    try {
-      const repoResponse = await fetch("https://api.github.com/repos/SOLRICKS/comfyui-solricks", {
-        headers: {
-          "Accept": "application/vnd.github+json"
-        }
-      });
+  if (!starsEl) return;
 
-      if (!repoResponse.ok) {
-        throw new Error("GitHub repo API request failed");
+  try {
+    const repoResponse = await fetch(repoUrl, {
+      headers: {
+        Accept: "application/vnd.github+json"
       }
+    });
 
+    if (repoResponse.ok) {
       const repo = await repoResponse.json();
       const stars = Number(repo.stargazers_count || 0);
 
       starsEl.textContent = `+${stars}`;
       starsEl.title = `${stars} GitHub stars`;
-
-      const stargazersResponse = await fetch("https://api.github.com/repos/SOLRICKS/comfyui-solricks/stargazers?per_page=3", {
-        headers: {
-          "Accept": "application/vnd.github+json"
-        }
-      });
-
-      if (!stargazersResponse.ok) {
-        throw new Error("GitHub stargazers API request failed");
-      }
-
-      const stargazers = await stargazersResponse.json();
-
-      stargazers.slice(0, 3).forEach((user, index) => {
-        const avatarEl = avatarEls[index];
-
-        if (avatarEl && user.avatar_url) {
-          avatarEl.src = user.avatar_url;
-        }
-      });
-    } catch (error) {
-      console.warn("Could not load GitHub data:", error);
+    } else {
+      console.warn("GitHub stars request failed:", repoResponse.status);
       starsEl.textContent = "+22";
     }
+  } catch (error) {
+    console.warn("Could not load GitHub stars:", error);
+    starsEl.textContent = "+22";
   }
 
-  loadGitHubStars();
+  try {
+    const stargazersResponse = await fetch(stargazersUrl, {
+      headers: {
+        Accept: "application/vnd.github+json"
+      }
+    });
+
+    if (!stargazersResponse.ok) {
+      console.warn("GitHub avatars request failed:", stargazersResponse.status);
+      return;
+    }
+
+    const stargazers = await stargazersResponse.json();
+
+    stargazers.slice(0, 3).forEach((user, index) => {
+      const avatarEl = avatarEls[index];
+
+      if (avatarEl && user.avatar_url) {
+        avatarEl.src = user.avatar_url;
+      }
+    });
+  } catch (error) {
+    console.warn("Could not load GitHub avatars:", error);
+  }
+}
+
+loadGitHubStars();
  </script>
 </body>
 </html>
