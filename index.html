@@ -95,15 +95,21 @@
           <div class="hero-copy">
             <div class="client-row">
               <div class="avatars" aria-hidden="true">
-                <span class="avatar"></span>
-                <span class="avatar"></span>
-                <span class="avatar"></span>
-                <span class="avatar-more" id="github-stars">+22</span>
-              </div>
+			  <span class="avatar">
+				<img id="github-avatar-1" alt="" />
+			  </span>
+			  <span class="avatar">
+				<img id="github-avatar-2" alt="" />
+			  </span>
+			  <span class="avatar">
+				<img id="github-avatar-3" alt="" />
+			  </span>
+			  <span class="avatar-more" id="github-stars">+22</span>
+			</div>
 
               <div>
                 <div class="stars">★★★★★</div>
-                <div class="happy">AI-ready workflows</div>
+                <div class="happy">Ready-to-Deploy</div>
               </div>
             </div>
 
@@ -354,34 +360,59 @@
 	  }
 	});
 
-	async function loadGitHubStars() {
-	  const starsEl = document.getElementById("github-stars");
+ async function loadGitHubStars() {
+    const starsEl = document.getElementById("github-stars");
+    const avatarEls = [
+      document.getElementById("github-avatar-1"),
+      document.getElementById("github-avatar-2"),
+      document.getElementById("github-avatar-3")
+    ];
 
-	  if (!starsEl) return;
+    if (!starsEl) return;
 
-	  try {
-		const response = await fetch("https://api.github.com/repos/SOLRICKS/comfyui-solricks", {
-		  headers: {
-			"Accept": "application/vnd.github+json"
-		  }
-		});
+    try {
+      const repoResponse = await fetch("https://api.github.com/repos/SOLRICKS/comfyui-solricks", {
+        headers: {
+          "Accept": "application/vnd.github+json"
+        }
+      });
 
-		if (!response.ok) {
-		  throw new Error("GitHub API request failed");
-		}
+      if (!repoResponse.ok) {
+        throw new Error("GitHub repo API request failed");
+      }
 
-		const repo = await response.json();
-		const stars = Number(repo.stargazers_count || 0);
+      const repo = await repoResponse.json();
+      const stars = Number(repo.stargazers_count || 0);
 
-		starsEl.textContent = `+${stars}`;
-		starsEl.title = `${stars} GitHub stars`;
-	  } catch (error) {
-		console.warn("Could not load GitHub stars:", error);
-		starsEl.textContent = "+22";
-	  }
-	}
+      starsEl.textContent = `+${stars}`;
+      starsEl.title = `${stars} GitHub stars`;
 
-	loadGitHubStars();
+      const stargazersResponse = await fetch("https://api.github.com/repos/SOLRICKS/comfyui-solricks/stargazers?per_page=3", {
+        headers: {
+          "Accept": "application/vnd.github+json"
+        }
+      });
+
+      if (!stargazersResponse.ok) {
+        throw new Error("GitHub stargazers API request failed");
+      }
+
+      const stargazers = await stargazersResponse.json();
+
+      stargazers.slice(0, 3).forEach((user, index) => {
+        const avatarEl = avatarEls[index];
+
+        if (avatarEl && user.avatar_url) {
+          avatarEl.src = user.avatar_url;
+        }
+      });
+    } catch (error) {
+      console.warn("Could not load GitHub data:", error);
+      starsEl.textContent = "+22";
+    }
+  }
+
+  loadGitHubStars();
  </script>
 </body>
 </html>
