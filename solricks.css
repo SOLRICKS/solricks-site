@@ -92,6 +92,22 @@
       gap: 10px;
     }
 	
+	.menu-mark {
+	  width: 15px;
+	  height: 15px;
+	  display: inline-flex;
+	  align-items: center;
+	  justify-content: center;
+	  flex: 0 0 15px;
+	}
+
+	.menu-mark svg {
+	  display: block;
+	  width: 15px;
+	  height: 15px;
+	  fill: currentColor;
+	}
+	
 	.menu-toggle,
     .menu-close {
       height: 42px;
