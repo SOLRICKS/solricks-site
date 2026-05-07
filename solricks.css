@@ -1567,7 +1567,7 @@
 		}
 
 		.brand img {
-		  max-width: 132px;
+		  max-width: 136px;
 		}
 	  
 	  .topbar {
@@ -1773,7 +1773,7 @@
 	}
 	@media (max-width: 390px) {
 	  .brand img {
-		max-width: 118px;
+		max-width: 136px;
 	  }
 
 	.menu-toggle {
