@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+  
   <title>Solricks | Start Automating</title>
   <link rel="icon" type="image/png" href="upload/favicon.png" sizes="64x64">
 
@@ -329,6 +329,20 @@
       z-index: 3;
       height: 100%;
     }
+	
+	.brand-story {
+	  display: block;
+	  margin: 0;
+	  padding-left: 0;
+	  max-width: 620px;
+	  color: rgba(255, 255, 255, 0.42);
+	  font-size: 13px;
+	  font-weight: 800;
+	  line-height: 1.35;
+	  letter-spacing: 0.20em;
+	  text-transform: uppercase;
+	  transform: translateX(12px);
+	}
 
     .headline {
       position: absolute;
@@ -802,7 +816,42 @@
         height: 38px;
         font-size: 16px;
       }
+	  .brand-note {
+	  right: 18px;
+	  bottom: 16px;
+	  left: 18px;
+	  max-width: none;
+	  justify-content: flex-end;
+	  font-size: 9px;
+	  line-height: 1.35;
+	}
+	.brand-story {
+	  max-width: 300px;
+	  font-size: 10px;
+	  line-height: 1.35;
+	  color: rgba(255, 255, 255, 0.42);
+	}
+
     }
+	
+	.brand-note {
+	  position: fixed;
+	  right: 28px;
+	  bottom: 24px;
+	  z-index: 30;
+	  max-width: 420px;
+	  display: flex;
+	  flex-wrap: wrap;
+	  justify-content: flex-end;
+	  gap: 6px;
+	  color: rgba(255,255,255,0.48);
+	  font-size: 11px;
+	  font-weight: 700;
+	  letter-spacing: 0.01em;
+	  line-height: 1.4;
+	  text-align: right;
+	  pointer-events: none;
+	}
 
     ::selection {
       background: transparent;
@@ -849,9 +898,13 @@
 
           <div class="hero-main">
             <div class="headline" aria-label="Build With AI">
-              <div class="headline-line">BUILD</div>
-              <div class="headline-line offset">WITH</div>
-            </div>
+			  <div class="brand-story">
+				<span style="font-size: 11px; letter-spacing: 2px; color: gray;">SOLRICKS MEANS SOLUTION BRICKS. WE BUILD AI-POWERED SYSTEMS.</span>
+			  </div>
+
+			  <div class="headline-line">BUILD</div>
+			  <div class="headline-line offset">WITH</div>
+			</div>
 
             <aside class="ai-side">
               <div class="ai-label">AI</div>
@@ -903,6 +956,10 @@
         <i class="fa-solid fa-robot"></i>
       </a>
     </div>
+	<div class="brand-note">
+	  <!-- <span>Solricks means solution bricks. We build AI-powered systems block by block.</span> -->
+	  <span>© 2026 Solricks.</span>
+	</div>
   </div>
 
   <script>
