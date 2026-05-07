@@ -837,6 +837,13 @@
       letter-spacing: 0.02em;
       transition: 0.22s ease;
     }
+	
+	.share-button {
+	  cursor: pointer;
+	  font-family: inherit;
+	  appearance: none;
+	  -webkit-appearance: none;
+	}
 
     .call-button {
       min-width: 0;

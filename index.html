@@ -59,7 +59,9 @@
             </span>
           </a>
 
-          <a class="arrow-button" href="#" aria-label="Contact Solricks">↗</a>
+          <button class="arrow-button share-button" id="shareSite" type="button" aria-label="Share Solricks">
+			  ↗
+			</button>
         </div>
       </header>
 
@@ -359,6 +361,37 @@
 		closeMenu();
 	  }
 	});
+
+const shareSiteButton = document.getElementById("shareSite");
+
+async function shareSite() {
+  const shareData = {
+    title: "Solricks",
+    text: "SOLRICKS: SOLUTION BRICKS FOR AI-POWERED SYSTEMS.",
+    url: "https://solricks.com"
+  };
+
+  try {
+    if (navigator.share) {
+      await navigator.share(shareData);
+      return;
+    }
+
+    await navigator.clipboard.writeText(shareData.url);
+
+    shareSiteButton.textContent = "✓";
+
+    setTimeout(() => {
+      shareSiteButton.textContent = "↗";
+    }, 1400);
+  } catch (error) {
+    console.warn("Share cancelled or failed:", error);
+  }
+}
+
+if (shareSiteButton) {
+  shareSiteButton.addEventListener("click", shareSite);
+}
 
 async function loadGitHubStars() {
   const starsEl = document.getElementById("github-stars");
