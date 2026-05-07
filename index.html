@@ -442,13 +442,17 @@ async function loadGitHubStars() {
 
     const stargazers = await stargazersResponse.json();
 
-    stargazers.slice(0, 3).forEach((user, index) => {
-      const avatarEl = avatarEls[index];
+	stargazers.slice(0, 3).forEach((user, index) => {
+	  const avatarEl = avatarEls[index];
 
-      if (avatarEl && user.avatar_url) {
-        avatarEl.src = user.avatar_url;
-      }
-    });
+		if (avatarEl && user.avatar_url) {
+		  avatarEl.onerror = () => {
+			avatarEl.removeAttribute("src");
+		  };
+
+		  avatarEl.src = user.avatar_url;
+		}
+	});
   } catch (error) {
     console.warn("Could not load GitHub avatars:", error);
   }
