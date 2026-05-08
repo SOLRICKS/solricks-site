@@ -2821,7 +2821,8 @@
 	  line-height: 1.35;
 	}
 
-	.spec-modal-actions a {
+	.spec-modal-actions a,
+	.spec-modal-contact-button {
 	  height: 48px;
 	  width: fit-content;
 	  min-width: 190px;
@@ -2833,8 +2834,15 @@
 	  border: 1px solid rgba(255,255,255,0.14);
 	  background: #ffffff;
 	  color: #05070b;
+	  font-family: inherit;
 	  font-size: 13px;
 	  font-weight: 900;
+	  cursor: pointer;
+	}
+
+	.spec-modal-contact-button i {
+	  font-style: normal;
+	  font-size: 18px;
 	}
 
 	.spec-modal-actions i {

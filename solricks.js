@@ -184,8 +184,8 @@ const SPEC_DATA = {
       "High-performance infrastructure for model training, fine-tuning, and large-scale AI workloads.",
     image: "upload/gpu-l40s.png",
     imageAlt: "AI training infrastructure render",
-    compute: "Blackwell Workstation – 900-5G153-2200-000",
-    memory: "256GB Memory Configuration",
+    compute: "Blackwell Workstation",
+    memory: "256GB",
     deployment: "On-prem",
     price: "$14.328",
     subject: "Training Systems"
@@ -199,8 +199,8 @@ const SPEC_DATA = {
     image: "upload/comf-ui.png",
     imageAlt: "Visual AI pipeline infrastructure render",
     compute: "H200 141GB ",
-    memory: "276GB for visual workloads",
-    deployment: "Cloud-ready Workflow",
+    memory: "276GB",
+    deployment: "Cloud-ready",
     price: "On-Demand $4.99/hr ",
     subject: "Visual AI Pipelines"
   }
@@ -236,7 +236,6 @@ function initSpecModal() {
     memory.textContent = data.memory;
     deployment.textContent = data.deployment;
     price.textContent = data.price;
-    contact.href = `mailto:hello@solricks.com?subject=${encodeURIComponent(data.subject)}`;
 
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
@@ -246,6 +245,19 @@ function initSpecModal() {
     modal.classList.remove("is-open");
     modal.setAttribute("aria-hidden", "true");
   }
+  
+  function goToContactView() {
+	  closeSpecModal();
+
+	  if (window.showSolricksView) {
+		window.showSolricksView("contact");
+		history.replaceState(null, "", "#contact");
+	  }
+	}
+
+	if (contact) {
+	  contact.addEventListener("click", goToContactView);
+	}
 
   openButtons.forEach((button) => {
     button.addEventListener("click", () => {
