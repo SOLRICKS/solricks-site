@@ -138,13 +138,15 @@ function initPageViews() {
     });
   });
 
-	if (window.location.hash === "#store") {
-	  showView("store");
-	} else if (window.location.hash === "#about") {
-	  showView("about");
-	} else {
-	  showView("home");
-	}
+		if (window.location.hash === "#store") {
+		  showView("store");
+		} else if (window.location.hash === "#about") {
+		  showView("about");
+		} else if (window.location.hash === "#contact") {
+		  showView("contact");
+		} else {
+		  showView("home");
+		}
 }
 
 function initShareButton() {
