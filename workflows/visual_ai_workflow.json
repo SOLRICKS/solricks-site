@@ -1,0 +1,165 @@
+{
+  "186": {
+    "inputs": {
+      "prompt": "beautiful blonde girl in the street, realistic"
+    },
+    "class_type": "CR Prompt Text",
+    "_meta": {
+      "title": "Prompt Text"
+    }
+  },
+  "280": {
+    "inputs": {
+      "images": [
+        "189:104",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "281": {
+    "inputs": {
+      "guidance": 3.5,
+      "conditioning": [
+        "189:177",
+        0
+      ]
+    },
+    "class_type": "FluxGuidance",
+    "_meta": {
+      "title": "FluxGuidance"
+    }
+  },
+  "189:102": {
+    "inputs": {
+      "vae_name": "flux2-vae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "189:105": {
+    "inputs": {
+      "width": 768,
+      "height": 1344,
+      "batch_size": 1
+    },
+    "class_type": "EmptyFlux2LatentImage",
+    "_meta": {
+      "title": "Empty Flux 2 Latent"
+    }
+  },
+  "189:136": {
+    "inputs": {
+      "clip_name": "qwen_3_8b_fp8mixed.safetensors",
+      "type": "flux2",
+      "device": "default"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "Load CLIP"
+    }
+  },
+  "189:126": {
+    "inputs": {
+      "unet_name": "flux-2-klein-base-9b.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Load Diffusion Model"
+    }
+  },
+  "189:154": {
+    "inputs": {
+      "sage_attention": "auto",
+      "allow_compile": true,
+      "model": [
+        "189:126",
+        0
+      ]
+    },
+    "class_type": "PathchSageAttentionKJ",
+    "_meta": {
+      "title": "Patch Sage Attention KJ"
+    }
+  },
+  "189:177": {
+    "inputs": {
+      "text": [
+        "186",
+        0
+      ],
+      "clip": [
+        "189:136",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "189:135": {
+    "inputs": {
+      "conditioning": [
+        "189:177",
+        0
+      ]
+    },
+    "class_type": "ConditioningZeroOut",
+    "_meta": {
+      "title": "ConditioningZeroOut"
+    }
+  },
+  "189:279": {
+    "inputs": {
+      "seed": 15719121860430,
+      "steps": 25,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "sgm_uniform",
+      "denoise": 1,
+      "model": [
+        "189:154",
+        0
+      ],
+      "positive": [
+        "281",
+        0
+      ],
+      "negative": [
+        "189:135",
+        0
+      ],
+      "latent_image": [
+        "189:105",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "189:104": {
+    "inputs": {
+      "samples": [
+        "189:279",
+        0
+      ],
+      "vae": [
+        "189:102",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  }
+}
