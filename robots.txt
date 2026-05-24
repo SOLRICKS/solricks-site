@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+User-agent: Googlebot-Image
+Disallow: /upload/solricks-hero-visual.png
+Disallow: /upload/servh200comp.png
+
 Sitemap: https://solricks.com/sitemap.xml
