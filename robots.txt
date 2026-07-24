@@ -1,4 +1,2 @@
 User-agent: *
-Allow: /
-
-Sitemap: https://solricks.com/sitemap.xml
+Disallow: /
