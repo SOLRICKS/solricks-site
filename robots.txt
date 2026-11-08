@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://solricks.com/sitemap.xml
+Sitemap: https://solricks.studio/sitemap.xml
